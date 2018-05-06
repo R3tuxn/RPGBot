@@ -2,10 +2,12 @@ package commandsystem.commands;
 
 import commandsystem.Command;
 import commandsystem.CommandManager;
+import logging.Logger;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.awt.*;
+import java.time.Instant;
 
 public class HelpCommand extends Command{
 
@@ -15,29 +17,30 @@ public class HelpCommand extends Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-            if(args[1] != null){
-                EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("Commandlist");
-                builder.setColor(Color.ORANGE);
-                builder.setFooter("Requested by " + event.getAuthor().getName(), event.getAuthor().getAvatarUrl());
-                for(Command c : CommandManager.commands){
-                    if(args[1].equalsIgnoreCase(c.getName())){
-                        builder.setDescription(c.getName() + " " + c.getDescription());
-                    }
-                }
-                event.getTextChannel().sendMessage(builder.build()).queue();
-            }else{
-                EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("Commandlist");
-                builder.setColor(Color.ORANGE);
-                builder.setFooter("Requested by " + event.getAuthor().getName(), event.getAuthor().getAvatarUrl());
-                builder.setDescription(
-                        CommandManager.commands.get(0).getName() + " " + CommandManager.commands.get(0).getDescription() + "\n" +
-                                CommandManager.commands.get(1).getName() + " " + CommandManager.commands.get(1).getDescription()
-                );
-                event.getTextChannel().sendMessage(builder.build()).queue();
-            }
-    }
+
+        if (args.length > 1) {
+            Logger.argslength(",help", event);
+            return;
+        }
+
+
+        EmbedBuilder em1 = new EmbedBuilder();
+
+            String Ping = "`,ping` *Shows the bot ping!*";
+            String Help = "`,help` *Open this message!*";
+
+            em1.setTitle("Help")
+            .setColor(Color.orange)
+            .addField("", Ping, false)
+            .addField("", Help, false)
+            .setFooter(event.getAuthor().getName(), event.getAuthor().getEffectiveAvatarUrl())
+            .setTimestamp(Instant.now());
+
+            event.getTextChannel().sendMessage(em1.build()).queue();
+
+            Logger.commandLog(getName(), event.getAuthor().getName(), event.getAuthor().getDiscriminator());
+        }
+
 
     @Override
     public String getName() {

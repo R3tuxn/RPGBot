@@ -20,7 +20,6 @@ public class CommandManager {
 
     //Hier geht der Bot alle Commands durch und überprüft ob ein Command aufgerufen wurde
     public void callCommmands(String[] args, MessageReceivedEvent e){
-        Logger.informationLog("Starting method");
         for(Command c : commands){
             if(args[0].equalsIgnoreCase(c.getName())){
                 c.action(args, e);

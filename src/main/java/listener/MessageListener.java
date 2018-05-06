@@ -11,7 +11,6 @@ public class MessageListener extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent event) {
         if(event.getMessage().getContentRaw().startsWith(","))
         {
-            Logger.informationLog("Message received by" + event.getAuthor().getName());
             event.getMessage().getContentRaw().replace(",", "");
             String arg = event.getMessage().getContentRaw().replaceFirst(",", "");
             String[] args = arg.split(" ");

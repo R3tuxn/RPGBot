@@ -1,6 +1,7 @@
 package commandsystem.commands;
 
 import commandsystem.Command;
+import logging.Logger;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class PingCommand extends Command{
@@ -11,7 +12,15 @@ public class PingCommand extends Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+
+        if (args.length > 1) {
+            Logger.argslength(",ping", event);
+            return;
+        }
+
         event.getChannel().sendMessage("Pong you little Faggo").queue();
+
+        Logger.commandLog(getName(), event.getAuthor().getName(), event.getAuthor().getDiscriminator());
     }
 
     @Override
