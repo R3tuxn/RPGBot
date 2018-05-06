@@ -1,5 +1,6 @@
 package core;
 
+import listener.ReadyListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -21,6 +22,9 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.playing(Static.GAME));
 
+
+        builder.addEventListener(new ReadyListener());
+
         try {
             JDA jda = builder.buildBlocking();
         } catch (LoginException e) {
@@ -30,4 +34,9 @@ public class Main {
         }
 
     }
+    public static void addCommand() throws LoginException, InterruptedException {
+
+
+    }
 }
+
