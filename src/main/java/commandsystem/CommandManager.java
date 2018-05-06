@@ -1,5 +1,6 @@
 package commandsystem;
 
+import commandsystem.commands.HelpCommand;
 import commandsystem.commands.PingCommand;
 import logging.Logger;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -14,6 +15,7 @@ public class CommandManager {
     //Hier fügt man Commands in die Commandlist hinzu
     public CommandManager(){
         commands.add(new PingCommand("", ""));
+        commands.add(new HelpCommand("", ""));
     }
 
     //Hier geht der Bot alle Commands durch und überprüft ob ein Command aufgerufen wurde

@@ -11,7 +11,7 @@ public class PingCommand extends Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getChannel().sendMessage("Pong").queue();
+        event.getChannel().sendMessage("Pong you little Faggo").queue();
     }
 
     @Override
