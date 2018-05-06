@@ -24,6 +24,7 @@ public class CommandManager {
         for(Command c : commands){
             if(args[0].equalsIgnoreCase(c.getName())){
                 c.action(args, e);
+                return;
             }
         }
     }

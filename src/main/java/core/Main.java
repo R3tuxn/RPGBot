@@ -23,7 +23,6 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.playing(Static.GAME));
 
-
         builder.addEventListener(new ReadyListener());
         builder.addEventListener(new MessageListener());
 
