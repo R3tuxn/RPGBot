@@ -1,5 +1,6 @@
 package core;
 
+import listener.MessageListener;
 import listener.ReadyListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -24,6 +25,7 @@ public class Main {
 
 
         builder.addEventListener(new ReadyListener());
+        builder.addEventListener(new MessageListener());
 
         try {
             JDA jda = builder.buildBlocking();
