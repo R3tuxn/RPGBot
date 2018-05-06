@@ -8,5 +8,6 @@ public class ReadyListener extends ListenerAdapter{
     @Override
     public void onReady(ReadyEvent event) {
         System.out.println("[+] WORKING ON FOLLOWING SERVERS: " + event.getJDA().getGuilds());
+        System.out.println("[+] WORKING ON " + event.getJDA().getGuilds().size() + " Servers!");
     }
 }
