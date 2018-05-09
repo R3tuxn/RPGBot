@@ -1,5 +1,6 @@
 package commandsystem;
 
+import commandsystem.commands.AddCharacterCmd;
 import commandsystem.commands.HelpCommand;
 import commandsystem.commands.PingCommand;
 import logging.Logger;
@@ -16,6 +17,7 @@ public class CommandManager {
     public CommandManager(){
         commands.add(new PingCommand("", ""));
         commands.add(new HelpCommand("", ""));
+        commands.add(new AddCharacterCmd("", "", ""));
     }
 
     //Hier geht der Bot alle Commands durch und überprüft ob ein Command aufgerufen wurde
