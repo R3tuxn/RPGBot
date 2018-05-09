@@ -6,10 +6,12 @@ public abstract class Command {
 
     private String name;
     private String description;
+    private String usage;
 
-    public Command(String name, String description){
+    public Command(String name, String description, String usage){
         this.name = name;
         this.description = description;
+        this.usage = usage;
     }
 
 
@@ -22,5 +24,9 @@ public abstract class Command {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getUsage(){
+        return usage;
     }
 }
