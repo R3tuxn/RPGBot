@@ -21,6 +21,10 @@ public class AddCharacterCmd extends Command{
             Logger.argslength(",addchar", event);
             return;
         }
+        if(args.length < 8){
+            Logger.argslength(",addchar", event);
+            return;
+        }
 
         GameManager.characters.add(new Character(args[1], args[2], Integer.parseInt(args[3]), Boolean.parseBoolean(args[4]), args[5], Boolean.parseBoolean(args[6]), Boolean.parseBoolean(args[7])));
         EmbedBuilder builder = new EmbedBuilder();
@@ -31,6 +35,8 @@ public class AddCharacterCmd extends Command{
                 "`AGE:` " + GameManager.characters.get(0).getAge());
 
         event.getTextChannel().sendMessage(builder.build()).queue();
+
+        Logger.commandLog(",addchar", event.getAuthor().getName(),event.getAuthor().getDiscriminator() );
 
 
 
