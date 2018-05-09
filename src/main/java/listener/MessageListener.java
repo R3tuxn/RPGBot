@@ -11,12 +11,14 @@ public class MessageListener extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent event) {
         if(event.getMessage().getContentRaw().startsWith(","))
         {
-            event.getMessage().getContentRaw().replace(",", "");
-            String arg = event.getMessage().getContentRaw().replaceFirst(",", "");
-            String[] args = arg.split(" ");
+            if(!event.getAuthor().isBot() && event.getAuthor().getId() != event.getJDA().getSelfUser().getId()){
+                event.getMessage().getContentRaw().replace(",", "");
+                String arg = event.getMessage().getContentRaw().replaceFirst(",", "");
+                String[] args = arg.split(" ");
 
-            CommandManager commandManager = new CommandManager();
-            commandManager.callCommmands(args, event);
+                CommandManager commandManager = new CommandManager();
+                commandManager.callCommmands(args, event);
+            }
         }
     }
 }

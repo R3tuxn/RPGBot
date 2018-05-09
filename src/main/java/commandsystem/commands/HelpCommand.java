@@ -12,7 +12,7 @@ import java.time.Instant;
 public class HelpCommand extends Command{
 
     public HelpCommand(String name, String description) {
-        super("help", "Shows you a command list");
+        super("help", "Shows you a command list", ",help | ,help usage <Command>");
     }
 
     @Override
@@ -50,5 +50,10 @@ public class HelpCommand extends Command{
     @Override
     public String getDescription() {
         return super.getDescription();
+    }
+
+    @Override
+    public String getUsage() {
+        return super.getUsage();
     }
 }

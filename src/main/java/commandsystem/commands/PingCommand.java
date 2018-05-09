@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class PingCommand extends Command{
 
     public PingCommand(String name, String description) {
-        super("ping", "Checks if the bot is alive");
+        super("ping", "Checks if the bot is alive", ",ping");
     }
 
     @Override
@@ -31,5 +31,10 @@ public class PingCommand extends Command{
     @Override
     public String getDescription() {
         return super.getDescription();
+    }
+
+    @Override
+    public String getUsage() {
+        return super.getUsage();
     }
 }
